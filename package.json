@@ -4,12 +4,12 @@
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.8",
-    "@emotion/styled": "^11.10.8",
+    "@emotion/styled": "^11.10.8 vv",
     "@fullcalendar/core": "^6.1.6",
     "@fullcalendar/daygrid": "^6.1.6",
     "@fullcalendar/list": "^6.1.6",
     "@fullcalendar/timegrid": "^6.1.6",
-    "@mui/icons-material": "^5.11.16",
+    "@mui/icons-material": "^5.11. 16",
     "@mui/material": "^5.12.2",
     "@mui/x-data-grid": "^6.3.0",
     "@nivo/bar": "^0.81.0",
@@ -37,7 +37,7 @@
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
+      "react-app", 
       "react-app/jest"
     ]
   },

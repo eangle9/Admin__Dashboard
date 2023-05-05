@@ -6,6 +6,7 @@ import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import NotifiationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
 import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import SearchIcon from '@mui/icons-material/Search';
 
 
@@ -14,12 +15,31 @@ const Topbar = () => {
     const colors = tokens(theme.palette.mode);
     const colorMode = useContext(ColorModeContext);
     return (
-        <Box display="flex" justifyContent="space-between" p={2}>
+        <Box display="flex" justifyContent="space-between" alignItems="center" marginLeft="240px" p={2}>
             <Box
                 display="flex"
-                backgrounColor={colors.primary[400]}
+                backgroundColor={colors.primary[400]}
                 borderRadius="3px">
                 <InputBase sx={{ ml: 2, flex: 1 }} placeholder="search" />
+                <IconButton>
+                    <SearchIcon />
+                </IconButton>
+            </Box>
+            <Box display="flex" alignItems="center">
+                <IconButton onClick={colorMode.toggleColorMode}>
+                    {theme.palette.mode === "dark"?(
+                        <DarkModeOutlinedIcon/>
+                    ):(
+                        <LightModeOutlinedIcon/>
+                    )}
+                </IconButton>
+                <IconButton>
+                    <SettingsOutlinedIcon />
+                </IconButton>
+                    <NotifiationsOutlinedIcon sx={{cursor:"pointer"}} />
+                <IconButton>
+                    <PersonOutlinedIcon />
+                </IconButton>
             </Box>
         </Box>
     );
