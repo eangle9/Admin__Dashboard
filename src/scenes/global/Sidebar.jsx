@@ -1,21 +1,12 @@
 import * as React from 'react';
-import { useTheme, MenuItem, IconButton } from '@mui/material';
+import { useTheme, IconButton } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { tokens } from '../../theme';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
 import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import ContactsOutlinedIcon from '@mui/icons-material/HomeOutlined';
@@ -36,6 +27,75 @@ const drawerWidth = 250;
 export default function Sidebar() {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+
+  const items = [
+    {
+      title: "Data",
+      lists: [
+        {
+          title: "Manage Team",
+          icon: <PeopleOutlinedIcon />,
+          link: "/team",
+        },
+        {
+          title: "Contacts Information",
+          icon: <ContactsOutlinedIcon />,
+          link: "/contacts",
+        },
+        {
+          title: "Invoices Balances",
+          icon: <ReceiptOutlinedIcon />,
+          link: "/invoices",
+        }
+      ]
+    },
+    {
+      title: "Pages",
+      lists: [
+        {
+          title: "Profile Form",
+          icon: <PersonOutlineOutlinedIcon />,
+          link: "/team",
+        },
+        {
+          title: "Calendar",
+          icon: <CalendarTodayOutlinedIcon />,
+          link: "/calendar",
+        },
+        {
+          title: "FAQ Page",
+          icon: <HelpOutlineOutlinedIcon />,
+          link: "/faq",
+        }
+      ]
+    },
+    {
+      title: "Charts",
+      lists: [
+        {
+          title: "Bar Chart",
+          icon: <BarChartOutlinedIcon />,
+          link: "/bar",
+        },
+        {
+          title: "Pie Chart",
+          icon: <PieChartOutlineOutlinedIcon />,
+          link: "/pie",
+        },
+        {
+          title: "Line Chart",
+          icon: <TimelineOutlinedIcon />,
+          link: "/line",
+        },
+        {
+          title: "Geography Chart",
+          icon: <MapOutlinedIcon />,
+          link: "/geography",
+        }
+      ]
+    }
+  ]
+
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -75,142 +135,58 @@ export default function Sidebar() {
       >
         {/*  <Toolbar /> */}
         <Box display="flex" justifyContent="space-between" alignItems="center" marginTop="20px">
-          <Typography sx={{ ml: "25px" }}>
+          <Typography sx={{ ml: "25px", color: `${colors.grey[100]}` }}>
             ADMINS
           </Typography>
-          <IconButton sx={{ mr: "25px" }}>
+          <IconButton sx={{ mr: "25px", color: `${colors.grey[100]}` }}>
             <MenuOutlinedIcon />
           </IconButton>
         </Box>
+
         <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" marginTop="15px">
           <img
             src="https://github.com/ed-roh/react-admin-dashboard/blob/master/public/assets/user.png?raw=true"
-            width="100px"
-            height="100px"
-            sx={{ borderRadius: "50%" }}
+            width="90px"
+            height="90px"
+            style={{ borderRadius: "50%" }}
           />
           <Typography sx={{ color: `${colors.grey[100]}`, mb: "0px", mt: "3px", }}>
-            <h1 style={{ margin: "0px" }}>addis</h1>
+            <h2 style={{ margin: "0px" }}>addis</h2>
           </Typography>
           <Typography sx={{ color: `${colors.greenAccent[500]}` }}>
             <h3 style={{ margin: "0px", lineHeight: "0.6" }}>eangle</h3>
           </Typography>
+
         </Box>
         <Box display="flex" gap="20px" alignItems="center" marginLeft="35px" marginRight="35px" marginTop="40px">
           <HomeOutlinedIcon sx={{ cursor: "pointer" }} />
-          <Link to="/dashboard" style={{ textDecoration: "none" }} >
+          <Link to="/" style={{ textDecoration: "none" }} >
             <Typography sx={{ color: `${colors.grey[100]}` }}>
               <h5 style={{ margin: "0px" }}>Dashboard</h5>
             </Typography>
           </Link>
         </Box>
-        <Typography sx={{ ml: "24px", mt: "30px", color: `${colors.grey[300]}` }}>
-          <p style={{ margin: "0px", fontSize:"12px" }}>Data</p>
-        </Typography>
 
-        <Box display="flex" gap="20px" alignItems="center" marginLeft="35px" marginRight="35px" marginTop="17px">
-          <PeopleOutlinedIcon sx={{ cursor: "pointer" }} />
-          <Link to="/team" style={{ textDecoration: "none" }} >
-            <Typography sx={{ color: `${colors.grey[100]}` }}>
-              <h5 style={{ margin: "0px" }}>Manage Team</h5>
+        <Box mb="20px">
+        {items.map((item, index) =>
+          <>
+            <Typography key={index} sx={{ ml: "24px", mt: "30px", color: `${colors.grey[300]}` }}>
+              <p style={{ margin: "0px", fontSize: "12px" }}>{item.title}</p>
             </Typography>
-          </Link>
-        </Box> 
-        <Box display="flex" gap="20px" alignItems="center" marginLeft="35px" marginRight="35px" marginTop="17px">
-          <ContactsOutlinedIcon sx={{ cursor: "pointer" }} />
-          <Link to="/contacts" style={{ textDecoration: "none" }} >
-            <Typography sx={{ color: `${colors.grey[100]}` }}>
-              <h5 style={{ margin: "0px" }}>Contacts Information</h5>
-            </Typography>
-          </Link>
-        </Box>
-        <Box display="flex" gap="20px" alignItems="center" marginLeft="35px" marginRight="35px" marginTop="17px">
-          <ReceiptOutlinedIcon sx={{ cursor: "pointer" }} />
-          <Link to="/receipt" style={{ textDecoration: "none" }} >
-            <Typography sx={{ color: `${colors.grey[100]}` }}>
-              <h5 style={{ margin: "0px" }}>Invoices Balances</h5>
-            </Typography>
-          </Link>
+            {item.lists.map(list =>
+              <Box key={index} display="flex" gap="20px" alignItems="center" marginLeft="35px" marginRight="35px" marginTop="17px">
+                {list.icon}
+                <Link to={list.link} style={{ textDecoration: "none" }} >
+                  <Typography sx={{ color: `${colors.grey[100]}` }}>
+                    <h5 style={{ margin: "0px" }}>{list.title}</h5>
+                  </Typography>
+                </Link>
+              </Box>)}
+          </>
+        )}
         </Box>
 
-        <Typography sx={{ ml: "24px", mt: "30px", color: `${colors.grey[300]}` }}>
-          <p style={{ margin: "0px", fontSize:"12px" }}>Pages</p>
-        </Typography>
-        
-        <Box display="flex" gap="20px" alignItems="center" marginLeft="35px" marginRight="35px" marginTop="17px">
-          <PersonOutlineOutlinedIcon sx={{ cursor: "pointer" }} />
-          <Link to="/profile" style={{ textDecoration: "none" }} >
-            <Typography sx={{ color: `${colors.grey[100]}` }}>
-              <h5 style={{ margin: "0px" }}>Profile Form</h5>
-            </Typography>
-          </Link>
-        </Box>
-        <Box display="flex" gap="20px" alignItems="center" marginLeft="35px" marginRight="35px" marginTop="17px">
-          <CalendarTodayOutlinedIcon sx={{ cursor: "pointer" }} />
-          <Link to="/calendar" style={{ textDecoration: "none" }} >
-            <Typography sx={{ color: `${colors.grey[100]}` }}>
-              <h5 style={{ margin: "0px" }}>Calendar</h5>
-            </Typography>
-          </Link>
-        </Box>
-        <Box display="flex" gap="20px" alignItems="center" marginLeft="35px" marginRight="35px" marginTop="17px">
-          <HelpOutlineOutlinedIcon sx={{ cursor: "pointer" }} />
-          <Link to="/faq" style={{ textDecoration: "none" }} >
-            <Typography sx={{ color: `${colors.grey[100]}` }}>
-              <h5 style={{ margin: "0px" }}>FAQ Page</h5>
-            </Typography>
-          </Link>
-        </Box>
-
-        <Typography sx={{ ml: "24px", mt: "30px", color: `${colors.grey[300]}` }}>
-          <p style={{ margin: "0px", fontSize:"12px" }}>Charts</p>
-        </Typography>
-
-        <Box display="flex" gap="20px" alignItems="center" marginLeft="35px" marginRight="35px" marginTop="17px">
-          <BarChartOutlinedIcon sx={{ cursor: "pointer" }} />
-          <Link to="/bar" style={{ textDecoration: "none" }} >
-            <Typography sx={{ color: `${colors.grey[100]}` }}>
-              <h5 style={{ margin: "0px" }}>Bar Chart</h5>
-            </Typography>
-          </Link>
-        </Box>
-        <Box display="flex" gap="20px" alignItems="center" marginLeft="35px" marginRight="35px" marginTop="17px">
-          <PieChartOutlineOutlinedIcon sx={{ cursor: "pointer" }} />
-          <Link to="/pie" style={{ textDecoration: "none" }} >
-            <Typography sx={{ color: `${colors.grey[100]}` }}>
-              <h5 style={{ margin: "0px" }}>Pie Chart</h5>
-            </Typography>
-          </Link>
-        </Box>
-        <Box display="flex" gap="20px" alignItems="center" marginLeft="35px" marginRight="35px" marginTop="17px">
-          <TimelineOutlinedIcon sx={{ cursor: "pointer" }} />
-          <Link to="/line" style={{ textDecoration: "none" }} >
-            <Typography sx={{ color: `${colors.grey[100]}` }}>
-              <h5 style={{ margin: "0px" }}>Line Chart</h5>
-            </Typography>
-          </Link>
-        </Box>
-        <Box display="flex" gap="20px" alignItems="center" marginLeft="35px" marginRight="35px" marginTop="17px" marginBottom="50px">
-          <MapOutlinedIcon sx={{ cursor: "pointer" }} />
-          <Link to="/geography" style={{ textDecoration: "none" }} >
-            <Typography sx={{ color: `${colors.grey[100]}` }}>
-              <h5 style={{ margin: "0px" }}>Geography Chart</h5>
-            </Typography>
-          </Link>
-        </Box>
-        {/* <List>
-          <ListItem>
-            <Link to="/dashboard" style={{ textDecoration: "none" }}>
-              <ListItemButton sx={{ paddingBotton: "0px" }}>
-                <ListItemIcon>
-                  <HomeOutlinedIcon />
-                </ListItemIcon>
-                <ListItemText primary="Dashboard" sx={{ color: "#fff", textDecoration: "none" }} />
-              </ListItemButton>
-            </Link>
-          </ListItem>
-        </List> */}
       </Drawer>
-    </Box>
+    </Box >
   );
 }
