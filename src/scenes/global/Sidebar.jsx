@@ -149,6 +149,7 @@ export default function Sidebar() {
             width="90px"
             height="90px"
             style={{ borderRadius: "50%" }}
+            alt='addis'
           />
           <Typography sx={{ color: `${colors.grey[100]}`, mb: "0px", mt: "3px", }}>
             <h2 style={{ margin: "0px" }}>addis</h2>
