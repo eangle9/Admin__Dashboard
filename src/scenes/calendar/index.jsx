@@ -93,7 +93,7 @@ const Calendar = () => {
               listPlugin,
             ]}
             headerToolbar={{
-              left: "prev, next today",
+              left: "prev,next today",
               center: "title",
               right: "dayGridMonth,timeGridWeek,timeGridDay,listMonth",
             }}
@@ -105,6 +105,11 @@ const Calendar = () => {
             select={handleDateClick}
             eventClick={handleEventClick}
             eventsSet={(events) => setCurrentEvents(events)}
+            initialEvents={[
+                {id:"1490", title:"all day events", date:"2023-03-06" },
+                {id:"14894", title: "meeting with web", date:"2024-10-12"},
+                {id:"3452", title: "addis meeting", date:"2023-05-19"}
+            ]}
           />
         </Box>
       </Box>
