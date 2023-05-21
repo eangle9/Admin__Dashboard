@@ -36,6 +36,11 @@ const BarChart = ({isDashboard}) => {
                 text:{
                     fill:colors.greenAccent[100]
                 }
+        },
+        tooltip:{
+          container:{
+            color:colors.primary[500],
+          }
         }
       }}
       keys={["hot dog", "burger", "sandwich", "kebab", "fries", "donut"]}
